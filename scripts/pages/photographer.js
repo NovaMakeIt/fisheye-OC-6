@@ -41,8 +41,42 @@ async function displayPhotographerDetails() {
         sortOptions.addEventListener('change', (e) => {
             displayMedia(photographerMedia, e.target.value);
         });
+        
+        // Afficher le rectangle avec le total des likes et le prix du photographe
+        displayLikesAndPrice(photographerMedia, photographer);
     } else {
         console.error('Photographe non trouvé');
+    }
+}
+
+// Nouvelle fonction pour afficher le total des likes et le prix du photographe
+function displayLikesAndPrice(media, photographer) {
+    const rectangleLikes = document.querySelector('.rectangle-likes');
+    
+    // Calculer le total des likes
+    const totalLikes = media.reduce((sum, item) => sum + item.likes, 0);
+    
+    // Créer le contenu du rectangle
+    rectangleLikes.innerHTML = `
+        <div class="likes-count">${totalLikes} ❤</div>
+        <div class="photographer-price">${photographer.price}€ / jour</div>
+    `;
+}
+
+// Fonction pour mettre à jour le total des likes lorsqu'un utilisateur ajoute un like
+function updateTotalLikes() {
+    const likesCountElements = document.querySelectorAll('.media-likes span:first-child');
+    let totalLikes = 0;
+    
+    // Additionner tous les likes affichés
+    likesCountElements.forEach(element => {
+        totalLikes += parseInt(element.textContent);
+    });
+    
+    // Mettre à jour l'affichage
+    const totalLikesElement = document.querySelector('.likes-count');
+    if (totalLikesElement) {
+        totalLikesElement.textContent = `${totalLikes} ❤`;
     }
 }
 
@@ -129,7 +163,7 @@ function displayMedia(media, sortBy) {
             mediaElement.alt = item.title;
         } else if (item.video) {
             mediaElement = document.createElement('video');
-            mediaElement.src = `assets/videos/${item.video}`;
+            mediaElement.src = `assets/images/${item.video}`;
             mediaElement.setAttribute('controls', '');
             mediaElement.setAttribute('preload', 'metadata');
         }
@@ -160,6 +194,8 @@ function displayMedia(media, sortBy) {
         heartIcon.addEventListener('click', () => {
             item.likes++;
             likesCount.textContent = item.likes;
+            // Mettre à jour le total des likes
+            updateTotalLikes();
         });
         
         likes.appendChild(likesCount);
@@ -174,18 +210,6 @@ function displayMedia(media, sortBy) {
         
         portfolioSection.appendChild(mediaCard);
     });
-}
-
-// Fonction pour afficher la modal de contact (à définir ailleurs)
-function displayModal() {
-    const modal = document.getElementById('contact_modal');
-    modal.style.display = 'block';
-}
-
-// Fonction pour fermer la modal de contact
-function closeModal() {
-    const modal = document.getElementById('contact_modal');
-    modal.style.display = 'none';
 }
 
 // Appeler la fonction quand la page est chargée
