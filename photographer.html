@@ -42,18 +42,28 @@
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
+          <h2 id="photographer-name"></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="first-name">Prénom</label>
+            <input id="first-name" name="first-name" type="text" required />
+            
+            <label for="last-name">Nom</label>
+            <input id="last-name" name="last-name" type="text" required />
+            
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+            
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button type="submit" class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
-    <script src="/scripts/pages/photographer.js"></script>
+    <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
