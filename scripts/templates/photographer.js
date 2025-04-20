@@ -18,6 +18,7 @@ function photographerTemplate(data) {
         p.textContent = tagline;
         const money = document.createElement('p');
         money.textContent = `${price}€/jour`;
+        money.classList.add("money");
         link.appendChild(article);
         article.appendChild(img);
         article.appendChild(h2);

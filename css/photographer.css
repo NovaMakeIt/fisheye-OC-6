@@ -175,6 +175,10 @@
     max-width: 90%;
     max-height: 90%;
     margin: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lightbox-media-container {
@@ -200,7 +204,6 @@
     margin-top: 10px;
 }
 
-.lightbox-close,
 .lightbox-prev,
 .lightbox-next {
     background: none;
@@ -208,27 +211,32 @@
     color: white;
     font-size: 30px;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
+    padding: 10px;
+    z-index: 1010;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
     padding: 10px;
     z-index: 1010;
 }
 
-.lightbox-close {
-    top: -40px;
-    right: 0;
-    font-size: 40px;
-}
-
 .lightbox-prev {
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 50px;
 }
 
 .lightbox-next {
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 50px;
 }
 
 /* Ajout d'un pointeur sur les conteneurs médias pour indiquer qu'ils sont cliquables */
@@ -253,11 +261,16 @@
     }
     
     .lightbox-prev {
-        left: 10px;
+        left: 20px;
     }
     
     .lightbox-next {
-        right: 10px;
+        right: 20px;
+    }
+
+    .lightbox-close {
+        right: 20px;
+        top: 20px;
     }
 }
 
