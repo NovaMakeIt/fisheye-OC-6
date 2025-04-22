@@ -56,6 +56,11 @@
 }
 
 /* CSS pour la section de tri */
+.sort-options {
+    font-weight: 700;
+    font-size: 18px;
+}
+
 .sort-section {
     margin: 20px 100px;
     display: flex;
@@ -288,8 +293,15 @@
 
 .modal header h2 {
     font-size: 64px;
-    font-weight: normal;
+    font-weight: 400;
     text-align: center;
+}
+
+.photographer-name {
+    font-size: 64px;
+    font-weight: 400;
+    margin-top: 0; /* Supprime la marge supérieure */
+    margin-bottom: 20px;
 }
 
 form {
@@ -303,6 +315,11 @@ form {
 form label {
     color: #312E2E;
     font-size: 36px;
+}
+
+.input-form {
+    color: #312E2E;
+    font-size: 28px;
 }
 
 form div {

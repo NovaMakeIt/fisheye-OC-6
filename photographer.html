@@ -21,7 +21,7 @@
       
       <!-- Section pour le tri -->
       <div class="sort-section">
-        <label for="sort-options">Trier par </label>
+        <label class="sort-options" for="sort-options">Trier par </label>
         <select id="sort-options" name="sort-options">
           <option value="popularity">Popularité</option>
           <option value="date">Date</option>
@@ -48,16 +48,16 @@
           <h2 class="photographer-name" id="photographer-name"></h2>
           <div>
             <label for="first-name">Prénom</label>
-            <input id="first-name" name="first-name" type="text" required />
+            <input class="input-form" id="first-name" name="first-name" type="text" required />
             
             <label for="last-name">Nom</label>
-            <input id="last-name" name="last-name" type="text" required />
+            <input class="input-form" id="last-name" name="last-name" type="text" required />
             
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
+            <input class="input-form" id="email" name="email" type="email" required />
             
             <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea class="input-form" id="message" name="message" rows="5" required></textarea>
           </div>
           <button type="submit" class="contact_button">Envoyer</button>
         </form>
