@@ -45,6 +45,17 @@ function closeModal() {
     modal.style.display = "none";
 }
 
+// Fonction pour fermer la modal lorsque l'utilisateur appuie sur Échap
+function closeModalOnEscape(event) {
+    
+    if (event.key === "Escape") {
+        closeModal();
+    }
+}
+
+// Ajouter un écouteur d'événement pour détecter la touche Échap
+document.addEventListener('keydown', closeModalOnEscape);
+
 // Ajouter un écouteur d'événement pour la soumission du formulaire
 document.addEventListener('DOMContentLoaded', function() {
     // Appeler la fonction pour afficher le nom du photographe
