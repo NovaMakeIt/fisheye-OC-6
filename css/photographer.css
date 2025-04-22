@@ -209,7 +209,7 @@
     background: none;
     border: none;
     color: white;
-    font-size: 30px;
+    font-size: 50px;
     cursor: pointer;
     position: fixed;
     padding: 10px;
@@ -221,7 +221,7 @@
 .lightbox-close {
     position: fixed;
     top: 50px;
-    right: 50px;
+    right: 200px;
     font-size: 40px;
     background: none;
     border: none;
@@ -232,11 +232,11 @@
 }
 
 .lightbox-prev {
-    left: 50px;
+    left: 200px;
 }
 
 .lightbox-next {
-    right: 50px;
+    right: 200px;
 }
 
 /* Ajout d'un pointeur sur les conteneurs médias pour indiquer qu'ils sont cliquables */
