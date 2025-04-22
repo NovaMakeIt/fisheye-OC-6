@@ -4,9 +4,9 @@ function initLightbox(media) {
     const lightboxHTML = `
         <div id="lightbox" class="lightbox">
             <div class="lightbox-content">
-                <button class="lightbox-close">&times;</button>
-                <button class="lightbox-prev">&lt;</button>
-                <button class="lightbox-next">&gt;</button>
+                <button class="lightbox-close"><img src="assets/icons/close2.svg" alt="Close dialog"></button>
+                <button class="lightbox-prev"><img src="assets/icons/left.svg" alt="Previous image"></button>
+                <button class="lightbox-next"><img src="assets/icons/right.svg" alt="Next image"></button>
                 <div class="lightbox-media-container"></div>
                 <div class="lightbox-caption"></div>
             </div>

@@ -208,8 +208,6 @@
 .lightbox-next {
     background: none;
     border: none;
-    color: white;
-    font-size: 50px;
     cursor: pointer;
     position: fixed;
     padding: 10px;
@@ -220,12 +218,10 @@
 
 .lightbox-close {
     position: fixed;
-    top: 50px;
+    top: 60px;
     right: 200px;
-    font-size: 40px;
     background: none;
     border: none;
-    color: white;
     cursor: pointer;
     padding: 10px;
     z-index: 1010;
@@ -244,19 +240,10 @@
     cursor: pointer;
 }
 
-/* Style pour les boutons au survol */
-.lightbox-close:hover,
-.lightbox-prev:hover,
-.lightbox-next:hover {
-    color: #901C1C;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
 /* Pour les petits écrans */
 @media (max-width: 768px) {
     .lightbox-prev,
     .lightbox-next {
-        font-size: 24px;
         padding: 15px;
     }
     
