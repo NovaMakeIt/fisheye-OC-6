@@ -21,12 +21,16 @@
       
       <!-- Section pour le tri -->
       <div class="sort-section">
-        <label class="sort-options" for="sort-options">Trier par </label>
-        <select id="sort-options" name="sort-options">
-          <option value="popularity">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
+        <span class="sort-label">Trier par</span>
+        <div class="sort-menu">
+          <div class="sort-option active" data-value="popularity">
+            Popularité <img class="sort-arrow" src="assets/icons/arrow-tri.svg" alt="Flèche de tri">
+          </div>
+          <div class="sort-dropdown">
+            <div class="sort-option" data-value="date">Date</div>
+            <div class="sort-option" data-value="title">Titre</div>
+          </div>
+        </div>
       </div>
       
       <!-- Section pour le portfolio -->

@@ -56,31 +56,90 @@
 }
 
 /* CSS pour la section de tri */
-.sort-options {
-    font-weight: 700;
-    font-size: 18px;
-}
-
 .sort-section {
     margin: 20px 100px;
     display: flex;
     align-items: center;
-}
-
-.sort-section label {
+  }
+  
+  .sort-label {
+    font-weight: 700;
     font-size: 18px;
     margin-right: 10px;
-}
-
-.sort-section select {
-    font-size: 16px;
-    padding: 8px 16px;
-    border-radius: 5px;
+  }
+  
+  .sort-menu {
+    position: relative;
+    width: 170px;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .sort-option {
     background-color: #901C1C;
     color: white;
-    border: none;
-    cursor: pointer;
-}
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .sort-option.active {
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .sort-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    z-index: 10;
+    margin-top: 2px; /* Petit espace entre l'option active et le dropdown */
+  }
+  
+  /* Quand le menu est ouvert */
+  .sort-menu.open .sort-option.active {
+    border-radius: 5px 5px 0 0; /* Arrondi uniquement en haut */
+  }
+  
+  .sort-menu.open .sort-dropdown {
+    display: block;
+    border-radius: 0 0 5px 5px; /* Arrondi uniquement en bas */
+    overflow: hidden; /* Pour que le border-radius s'applique au contenu */
+  }
+  
+  /* Lignes de séparation entre les options */
+  .sort-dropdown .sort-option {
+    position: relative;
+  }
+  
+  .sort-dropdown .sort-option:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 1px;
+    background-color: white;
+    bottom: 0;
+  }
+  
+  /* Style pour la flèche */
+  .sort-arrow {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Flèche par défaut vers le bas */
+  .sort-option.active .sort-arrow {
+    display: inline-block;
+  }
+  
+  /* Flèche vers le haut quand le menu est ouvert */
+  .sort-menu.open .sort-option.active .sort-arrow {
+    transform: rotate(180deg);
+  }
 
 /* CSS pour le portfolio */
 .photograph-portfolio {
