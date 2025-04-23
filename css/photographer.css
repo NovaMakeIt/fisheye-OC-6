@@ -42,7 +42,7 @@
     border-radius: 50%;
 }
 
-.contact_button {
+.contact_button, .contact_button_submit {
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -53,6 +53,11 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.contact_button:focus, .contact_button:hover {
+    background-color: #DB8876;
+    color: black;
 }
 
 /* CSS pour la section de tri */
