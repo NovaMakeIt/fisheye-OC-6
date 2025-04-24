@@ -1,3 +1,33 @@
+/* Style pour les éléments interactifs qui reçoivent le focus */
+.photographer_section article:focus-within,
+.media-container:focus,
+.heart-icon:focus,
+.contact_button:focus,
+.contact_button_submit:focus {
+  outline: 3px solid #D3573C;
+  outline-offset: 2px;
+}
+
+.lightbox-close:focus,
+.lightbox-prev:focus,
+.lightbox-next:focus {
+  outline: none;
+}
+
+/* Pour cacher les éléments visuellement mais les garder accessibles aux lecteurs d'écran */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* */
 #contact_modal {
     display: none;
 }
@@ -88,6 +118,12 @@
     justify-content: space-between;
     align-items: center;
   }
+
+.sort-option:hover,
+.sort-option:focus {
+    background-color: #DB8876;
+    color: black;
+}
   
   .sort-option.active {
     font-weight: bold;
@@ -183,7 +219,8 @@
 
 .media-title {
     color: #901C1C;
-    font-size: 18px;
+    font-size: 24px;
+    font-weight: 400;
     margin: 0;
 }
 
@@ -196,10 +233,14 @@
 
 .media-likes span {
     margin-right: 5px;
+    font-size: 24px;
 }
 
 .heart-icon {
     cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 /* CSS pour le rectangle des likes */

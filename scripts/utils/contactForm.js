@@ -38,11 +38,38 @@ async function displayPhotographerName() {
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
+    
+    // Mettre le focus sur le premier champ du formulaire
+    document.getElementById('first-name').focus();
+    
+    // Empêcher le focus en dehors du modal
+    document.addEventListener('focus', trapFocus, true);
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    
+    // Remettre le focus sur le bouton qui a ouvert le modal
+    document.querySelector('.contact_button').focus();
+    
+    // Supprimer le piège à focus
+    document.removeEventListener('focus', trapFocus, true);
+}
+
+// Fonction pour garder le focus dans le modal
+function trapFocus(event) {
+    const modal = document.getElementById("contact_modal");
+    if (modal.style.display === "block") {
+        const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        if (!modal.contains(event.target)) {
+            event.stopPropagation();
+            firstElement.focus();
+        }
+    }
 }
 
 // Fonction pour fermer la modal lorsque l'utilisateur appuie sur Échap

@@ -35,6 +35,8 @@ function updateTotalLikes() {
 function displayMedia(media, sortBy, lightboxModule) {
     const portfolioSection = document.querySelector('.photograph-portfolio');
     portfolioSection.innerHTML = ''; // Nettoyer le contenu existant
+    portfolioSection.setAttribute('role', 'region');
+    portfolioSection.setAttribute('aria-label', 'Portfolio du photographe');
     
     // Trier les médias
     const sortedMedia = sortMedia(media, sortBy);
@@ -49,23 +51,35 @@ function displayMedia(media, sortBy, lightboxModule) {
         
         const mediaContainer = document.createElement('div');
         mediaContainer.classList.add('media-container');
+        mediaContainer.setAttribute('tabindex', '0');
+        mediaContainer.setAttribute('role', 'button');
+        mediaContainer.setAttribute('aria-label', `Voir ${item.title} en plein écran`);
         
         // Créer l'élément média (image ou vidéo)
         let mediaElement;
         if (item.image) {
             mediaElement = document.createElement('img');
             mediaElement.src = `assets/images/${item.image}`;
-            mediaElement.alt = item.title;
+            mediaElement.alt = item.title || 'Image du photographe';
         } else if (item.video) {
             mediaElement = document.createElement('video');
             mediaElement.src = `assets/images/${item.video}`;
             mediaElement.setAttribute('controls', '');
             mediaElement.setAttribute('preload', 'metadata');
+            mediaElement.setAttribute('aria-label', item.title || 'Vidéo du photographe');
         }
         
         // Ajouter l'écouteur d'événement pour ouvrir la lightbox
         mediaContainer.addEventListener('click', () => {
             lightbox.open(index);
+        });
+        
+        // Ajouter la gestion du clavier pour l'accessibilité
+        mediaContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                lightbox.open(index);
+            }
         });
         
         mediaContainer.appendChild(mediaElement);
@@ -82,20 +96,63 @@ function displayMedia(media, sortBy, lightboxModule) {
         // Ajouter les likes
         const likes = document.createElement('div');
         likes.classList.add('media-likes');
+        likes.setAttribute('role', 'group');
+        likes.setAttribute('aria-label', 'Likes');
         
         const likesCount = document.createElement('span');
         likesCount.textContent = item.likes;
+        likesCount.setAttribute('aria-label', `${item.likes} likes`);
         
-        const heartIcon = document.createElement('span');
+        const heartIcon = document.createElement('button');
         heartIcon.classList.add('heart-icon');
-        heartIcon.innerHTML = '❤'; // Icône cœur simple
+        // Créer l'élément image pour le cœur
+        const heartImg = document.createElement('img');
+        heartImg.src = 'assets/icons/likes.svg'; // Chemin vers votre image PNG
+        heartImg.alt = '';
+        heartImg.setAttribute('aria-hidden', 'true');
+        // Ajouter l'image au bouton
+        heartIcon.appendChild(heartImg);
+        heartIcon.setAttribute('aria-label', 'Ajouter un like');
+        heartIcon.setAttribute('title', 'Ajouter un like');
+
+        // Stocker un indicateur pour savoir si l'utilisateur a déjà liké cette image
+        let hasLiked = false;
         
         // Ajouter la fonctionnalité d'ajout de like
         heartIcon.addEventListener('click', () => {
-            item.likes++;
-            likesCount.textContent = item.likes;
-            // Mettre à jour le total des likes
-            updateTotalLikes();
+            if (!hasLiked) {
+                // Si l'utilisateur n'a pas encore aimé ce média
+                item.likes++;
+                likesCount.textContent = item.likes;
+                likesCount.setAttribute('aria-label', `${item.likes} likes`);
+                // Mettre à jour le total des likes
+                updateTotalLikes();
+                
+                // Marquer comme déjà liké
+                hasLiked = true;
+                
+                // Mettre à jour l'annonce pour les lecteurs d'écran
+                heartIcon.setAttribute('aria-label', `Vous avez aimé. Total: ${item.likes} likes`);
+                heartIcon.setAttribute('title', 'Déjà aimé');
+            }
+        });
+        
+        // Ajouter la gestion du clavier pour le bouton like
+        heartIcon.addEventListener('keydown', (e) => {
+            if ((e.key === 'Enter' || e.key === ' ') && !hasLiked) {
+                e.preventDefault();
+                item.likes++;
+                likesCount.textContent = item.likes;
+                likesCount.setAttribute('aria-label', `${item.likes} likes`);
+                updateTotalLikes();
+                
+                // Marquer comme déjà liké
+                hasLiked = true;
+                
+                // Mettre à jour l'annonce pour les lecteurs d'écran
+                heartIcon.setAttribute('aria-label', `Vous avez aimé. Total: ${item.likes} likes`);
+                heartIcon.setAttribute('title', 'Déjà aimé');
+            }
         });
         
         likes.appendChild(likesCount);

@@ -1,67 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <a href="index.html">
+      <a href="index.html" aria-label="Retour à la page d'accueil Fisheye">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
       </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        
-      </div>
+      <div class="photograph-header" role="banner"></div>
       
       <!-- Section pour le tri -->
-      <div class="sort-section">
-        <span class="sort-label">Trier par</span>
-        <div class="sort-menu">
-          <div class="sort-option active" data-value="popularity">
-            Popularité <img class="sort-arrow" src="assets/icons/arrow-tri.svg" alt="Flèche de tri">
+      <div class="sort-section" role="region" aria-label="Options de tri">
+        <span class="sort-label" id="sort-label">Trier par</span>
+        <div class="sort-menu" aria-labelledby="sort-label">
+          <div class="sort-option active" 
+               data-value="popularity" 
+               tabindex="0" 
+               role="button" 
+               aria-haspopup="listbox" 
+               aria-expanded="false"
+               aria-controls="sort-dropdown">
+            Popularité <img class="sort-arrow" src="assets/icons/arrow-tri.svg" alt="" aria-hidden="true">
           </div>
-          <div class="sort-dropdown">
-            <div class="sort-option" data-value="date">Date</div>
-            <div class="sort-option" data-value="title">Titre</div>
+          <div id="sort-dropdown" class="sort-dropdown" role="listbox">
+            <div class="sort-option" data-value="date" tabindex="0" role="option">Date</div>
+            <div class="sort-option" data-value="title" tabindex="0" role="option">Titre</div>
           </div>
         </div>
       </div>
       
       <!-- Section pour le portfolio -->
-      <div class="photograph-portfolio">
+      <div class="photograph-portfolio" role="region" aria-label="Portfolio du photographe"></div>
 
-      </div>
-
-      <div class="rectangle-likes">
-
-      </div>
+      <div class="rectangle-likes" aria-live="polite"></div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="modal-title">Contactez-moi</h2>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Fermer le formulaire" tabindex="0" role="button"/>
         </header>
         <form>
           <h2 class="photographer-name" id="photographer-name"></h2>
           <div>
             <label for="first-name">Prénom</label>
-            <input class="input-form" id="first-name" name="first-name" type="text" required />
+            <input class="input-form" id="first-name" name="first-name" type="text" required aria-required="true" />
             
             <label for="last-name">Nom</label>
-            <input class="input-form" id="last-name" name="last-name" type="text" required />
+            <input class="input-form" id="last-name" name="last-name" type="text" required aria-required="true" />
             
             <label for="email">Email</label>
-            <input class="input-form" id="email" name="email" type="email" required />
+            <input class="input-form" id="email" name="email" type="email" required aria-required="true" />
             
             <label for="message">Votre message</label>
-            <textarea class="input-form" id="message" name="message" rows="3" required></textarea>
+            <textarea class="input-form" id="message" name="message" rows="3" required aria-required="true"></textarea>
           </div>
           <button type="submit" class="contact_button_submit">Envoyer</button>
         </form>
