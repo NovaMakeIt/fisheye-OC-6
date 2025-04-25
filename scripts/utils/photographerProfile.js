@@ -41,7 +41,7 @@ function displayPhotographerInfo(photographer) {
     photographHeader.appendChild(profileImg);
 }
 
-// Nouvelle fonction pour afficher le total des likes et le prix du photographe
+// Fonction pour afficher le total des likes et le prix du photographe
 function displayLikesAndPrice(media, photographer) {
     const rectangleLikes = document.querySelector('.rectangle-likes');
     

@@ -3,7 +3,7 @@ import { displayPhotographerInfo, displayLikesAndPrice } from './../utils/photog
 import { displayMedia } from './../utils/mediaManager.js';
 import * as lightboxModule from './../utils/lightbox.js';
 
-// Fonction corrigée pour le menu de tri
+// Fonction pour le menu de tri
 function initSortMenu(photographerMedia, lightboxModule) {
   const sortMenu = document.querySelector('.sort-menu');
   const sortOptions = document.querySelectorAll('.sort-option');

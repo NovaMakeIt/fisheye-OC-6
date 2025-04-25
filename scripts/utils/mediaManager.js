@@ -107,7 +107,7 @@ function displayMedia(media, sortBy, lightboxModule) {
         heartIcon.classList.add('heart-icon');
         // Créer l'élément image pour le cœur
         const heartImg = document.createElement('img');
-        heartImg.src = 'assets/icons/likes.svg'; // Chemin vers votre image PNG
+        heartImg.src = 'assets/icons/likes.svg';
         heartImg.alt = '';
         heartImg.setAttribute('aria-hidden', 'true');
         // Ajouter l'image au bouton
@@ -118,7 +118,7 @@ function displayMedia(media, sortBy, lightboxModule) {
         // Stocker un indicateur pour savoir si l'utilisateur a déjà liké cette image
         let hasLiked = false;
         
-        // Ajouter la fonctionnalité d'ajout de like
+        // fonctionnalité d'ajout de like
         heartIcon.addEventListener('click', () => {
             if (!hasLiked) {
                 // Si l'utilisateur n'a pas encore aimé ce média
